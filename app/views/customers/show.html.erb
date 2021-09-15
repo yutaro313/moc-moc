@@ -1,0 +1,14 @@
+<h1>プロフィール</h1>
+
+<h3>プロフィール画像</h3>
+<%= attachment_image_tag @customer, :image, fallback: "no-image.png", size:'350x350' %>
+<h3>名前</h3>
+<%= @customer.name %>
+<h3>メールアドレス</h3>
+<%= @customer.email %>
+<h3>趣味</h3>
+<%= @customer.hobby %>
+<p>現在の学習内容:<%= @customer.learning %></p>
+<p>一言:<%= @customer.a_word %></p>
+
+<%= link_to "編集する", edit_customer_registration_path %>

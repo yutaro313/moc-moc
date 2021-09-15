@@ -1,0 +1,15 @@
+<li>
+  <%= link_to "新規投稿", new_post_path %>
+</li>
+<% @posts.each do |post| %>
+<div>
+  <!--プロフィール画像-->
+  <p>名前:<%= post.customer.name %></p>
+  <%= link_to post_path(post.id) do %>
+    <p><%= post.title %></p>
+  <% end %>
+  <p><%= l post.created_at %></p>
+  <p>説明:<%= post.caption %></p>
+  <p><%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %></p>
+</div>
+<% end %>
