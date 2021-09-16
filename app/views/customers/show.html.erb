@@ -11,4 +11,7 @@
 <p>現在の学習内容:<%= @customer.learning %></p>
 <p>一言:<%= @customer.a_word %></p>
 
-<%= link_to "編集する", edit_customer_registration_path %>
+<% if @customer == current_customer %>
+ <%= link_to "編集する", edit_customer_registration_path %>
+<% else %>
+<% end %>
