@@ -1,20 +1,25 @@
-<h1>会員一覧</h1>
-
-<table>
-    <thead>
-      <tr>
-        <th>会員ID</th>
-        <th>名前</th>
-        <th>プロフィール</th>
-      </tr>
-    </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-    <tr>
-      <td><%= customer.id %></td>
-      <td><%= customer.name %></td>
-      <td><%= link_to "#{customer.name}のプロフィール", customer_path(customer) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="content-title  p-4 mb-0">会員一覧</h5>
+      <table class="table orders-table text-white">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>名前</th>
+            <th>プロフィール</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= customer.name %></td>
+            <td><%= link_to "#{customer.name}のプロフィール", customer_path(customer), class:'text-white' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,20 @@
   <% if @post.customer == current_customer %>
     <%= link_to "削除", post_path(@post), method: :delete %>
   <% end %>
+  <!--いいね機能-->
+  <% if @post.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to post_favorites_path(@post), method: :delete do %>
+        ♥<%= @post.favorites.count %>いいね
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to post_favorites_path(@post), method: :post do %>
+        ♡<%= @post.favorites.count %>いいね
+      <% end %>
+    </p>
+  <% end %>
 </div>
 <!--コメント件数とコメント-->
 <div>

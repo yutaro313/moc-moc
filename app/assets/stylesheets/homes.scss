@@ -1,3 +1,25 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.big-bg {
+  /* 画像の縦横比を保ったまま表示領域いっぱいに広げる */
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+#home {
+  /* 背景画像の指定 */
+  background-image: url('top.png');
+  /* bodyの高さで終わらないように、ブラウザの高さいっぱいに広げる */
+  min-height: 100vh;
+}
+.login {
+  margin: 300px;
+  background-color: #24311e;
+}
+
+.logo2 {
+  padding: 250px;
+}
