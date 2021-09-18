@@ -1,18 +1,44 @@
-<h1>プロフィール</h1>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-6 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="content-title text-white p-4 mb-0">プロフィール</h5>
+      <div class="form-body p-4">
+        <div class="row">
+          <div class="profile-image">
+            <%= attachment_image_tag @customer, :image, fallback: "no-image.png", size:'450x350' %>
+          </div>
+          <div class="item-introduction ml-5 mt-5">
+            <table class="table table-borderless text-white">
+              <tbody>
+                <tr>
+                  <td class="item">名前</td>
+                  <td class="item-li"><%= @customer.name %></td>
+                </tr>
+                <tr>
+                  <td class="item">メールアドレス</td>
+                  <td class="item-li"><%= @customer.email %></td>
+                </tr>
+                <tr>
+                  <td class="item">趣味</td>
+                  <td class="item-li"><%= @customer.hobby %></td>
+                </tr>
+                 <tr>
+                  <td class="item">現在の学習内容</td>
+                  <td class="item-li"><%= @customer.learning %></td>
+                </tr>
+                 <tr>
+                  <td class="item">一言</td>
+                  <td class="item-li"><%= @customer.a_word %></td>
+                </tr>
+              </tbody>
+            </table>
 
-<h3>プロフィール画像</h3>
-<%= attachment_image_tag @customer, :image, fallback: "no-image.png", size:'350x250' %>
-<h3>名前</h3>
-<%= @customer.name %>
-<h3>メールアドレス</h3>
-<%= @customer.email %>
-<h3>趣味</h3>
-<%= @customer.hobby %>
-<p>現在の学習内容</p>
-<%= @customer.learning %>
-<p>一言</p>
-<%= @customer.a_word %>
-
-<% if @customer == current_customer %>
- <%= link_to "編集する", edit_customer_registration_path %>
-<% end %>
+          </div>
+        </div>
+        <% if @customer == current_customer %>
+         <%= link_to "編集する", edit_customer_registration_path, class:'btn btn-lg btn-blocl btn-success mt-4 offset-10' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

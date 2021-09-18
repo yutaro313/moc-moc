@@ -1,73 +1,77 @@
-<h2>プロフィール編集</h2>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-white content-title p-4 mb-0">プロフィール編集</h5>
+      <div class="form-body p-4">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+         <!--アカウント編集時に画像を変更できるようにフォームを追加-->
+        <%= f.attachment_field :image, class:"w-100" %>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true">名前</span>
+          </div>
+          <%= f.text_field :name,class:"form-control" %>
+        </div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true">メールアドレス</span>
+          </div>
+          <%= f.text_field :email,class:"form-control" %>
+        </div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true">趣味</span>
+          </div>
+          <%= f.text_field :hobby,class:"form-control" %>
+        </div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true">現在の学習内容</span>
+          </div>
+          <%= f.text_field :learning,class:"form-control" %>
+        </div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true">一言</span>
+          </div>
+          <%= f.text_field :a_word,class:"form-control" %>
+        </div>
+         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+         <% end %>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true">パスワード</span>
+          </div>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder:"変更したくない場合は空白のまま", :size => "84*84" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %> 文字以上</em>
+            <% end %>
+        </div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true">パスワード確認</span>
+          </div>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "90*90" %>
+        </div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text bg-danger text-white" aria-hidden="true">現在のパスワード</span>
+          </div>
+          <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"変更するには現在のパスワードが必要です", :size => "88*88" %>
+        </div>
+        <hr>
+        <%= f.submit '更新', class:"btn btn-lg btn-block btn-success mt-4" %>
+        <% end %>
+        <div class="input-group mb-3 mt-4">
+          <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:'btn btn-danger btn-lg' %></p>
+        </div>
+        <%= link_to "戻る", customer_path(@customer),class:'btn btn-secondary mt-4' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <!--アカウント編集時に名前を入力できるようにフォームを追加-->
-  <div class="field">
-    <%= f.label :名前 %><br />
-    <%= f.text_field :name, autofocus: true %>
+      </div>
+    </div>
   </div>
-  <!--アカウント編集時にメールアドレスを入力できるようにフォームを追加-->
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <!--アカウント編集時に画像を変更できるようにフォームを追加-->
-  <div class="field">
-    <%= f.label :プロフィール画像 %><br />
-    <%= f.attachment_field :image %>
-  </div>
-
-  <!--アカウント編集時に趣味を入力できるようにフォームを追加-->
-  <div class="field">
-    <%= f.label :趣味 %><br />
-    <%= f.text_field :hobby %>
-  </div>
-
-  <!--アカウント編集時に学習内容を入力できるようにフォームを追加-->
-  <div class="field">
-    <%= f.label :現在の学習内容 %><br />
-    <%= f.text_field :learning %>
-  </div>
-
-   <!--アカウント編集時に一言を入力できるようにフォームを追加-->
-  <div class="field">
-    <%= f.label :一言 %><br />
-    <%= f.text_field :a_word %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :パスワード %> <i>(変更したくない場合は空白のまま)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> 文字以上</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード確認 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :現在のパスワード %> <i>(変更を確認するには、現在のパスワードが必要です)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
-
-<h3>アカウントを削除しますか</h3>
-
-<p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "戻る", customer_path(@customer) %>
+</div>
