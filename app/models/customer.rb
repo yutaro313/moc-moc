@@ -8,11 +8,6 @@ class Customer < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  # validates :name, optional: true
-  # validates :learning, length: { maximum: 50 }, optional: true
-  # validates :hobby, length: { maximum: 50 }, optional: true
-  # validates :a_word, length: { maximum: 50 }, optional: true
-
   attachment :image
 
 end
